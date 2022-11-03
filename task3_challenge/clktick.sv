@@ -13,7 +13,7 @@ logic [WIDTH-1:0] count;
 
 //my laptop needs 24cycles
 
-always_ff @ (posedge clk)
+always_ff @ (posedge clk) begin
     if (rst) begin
         tick <= 1'b0;
         count <= N;  
@@ -26,6 +26,7 @@ always_ff @ (posedge clk)
 	    else begin
 		    tick <= 1'b0;
 		    count <= count - 1'b1;
-	        end
-        end
+	    end
+    end
+end
 endmodule
