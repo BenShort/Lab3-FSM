@@ -47,4 +47,8 @@ module delay #(
             WAIT_LOW:   time_out = 1'b0;
             default:    time_out = 1'b0;
         endcase
+    
+    //always_comb begin
+        //$display(trigger);
+    //end
 endmodule

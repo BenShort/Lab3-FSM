@@ -37,27 +37,23 @@ end
 //cmd delay
 always_comb begin
     if(current_state != S0) begin
-        cmd_seq <= 1'b1;
+        cmd_seq = 1'b1;
     end
     else begin
-        cmd_seq <= 1'b0;
+        cmd_seq = 1'b0;
     end
 end
 
 
 
-always_ff @(posedge clk, posedge trigger) begin
-    if (trigger == 1'b1) begin 
-        $display("i");
-        current_state <= S1;
-        cmd_delay <= 1'b1;
-        //current_state = S1;
-        //cmd_seq = 1'b1;
-        //$display("i");
+
+
+always_comb begin
+    if (current_state == S8) begin
+        cmd_delay = 1'b1;
     end
     else begin
-        cmd_delay <= 1'b0;
-        //$display("closed");
+        cmd_delay = 1'b0;
     end
 end
 
@@ -65,7 +61,12 @@ end
 //state transition
 always_ff @(posedge clk) begin
     if (rst)    current_state <= S0;
-    else        current_state <= next_state;
+    else if (trigger == 1'b1) begin
+        current_state <= S1;
+    end
+    else if ((en == 1'b1) && (cmd_seq == 1'b1))begin
+        current_state <= next_state;
+    end
 end
 
 //output logic

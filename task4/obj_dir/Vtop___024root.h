@@ -14,17 +14,18 @@ class Vtop___024root final : public VerilatedModule {
 
     // DESIGN SPECIFIC STATE
     VL_IN8(clk,0,0);
-    VL_IN8(trigger,0,0);
     VL_IN8(rst,0,0);
+    VL_IN8(trigger,0,0);
+    VL_IN8(bin,7,0);
     VL_OUT8(data_out,7,0);
-    CData/*0:0*/ top__DOT__cmd_delay;
+    CData/*0:0*/ top__DOT__cmd_seq;
     CData/*0:0*/ top__DOT__tick;
     CData/*0:0*/ top__DOT____Vcellinp__f1_fsm_block__en;
     CData/*4:0*/ top__DOT__clktick_block__DOT__count;
     CData/*6:0*/ top__DOT__delay_block__DOT__count;
     CData/*6:0*/ top__DOT__lfsr_block__DOT__sreg;
     CData/*0:0*/ __Vclklast__TOP__clk;
-    CData/*0:0*/ __Vclklast__TOP__trigger;
+    VL_OUT16(BCD,11,0);
     IData/*31:0*/ top__DOT__delay_block__DOT__current_state;
     IData/*31:0*/ top__DOT__delay_block__DOT__next_state;
     IData/*31:0*/ top__DOT__f1_fsm_block__DOT__current_state;

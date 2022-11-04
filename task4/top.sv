@@ -2,7 +2,9 @@ module top (
     input logic             rst,
     input logic             clk,
     input logic             trigger,
+    input logic [7:0]       bin,
 
+    output logic [11:0]     BCD,
     output logic [7:0]      data_out
 );
 
@@ -15,7 +17,7 @@ logic [6:0] k;
 
 
 clktick clktick_block(
-    .N (5'd24),
+    .N (5'd14),
     .en (cmd_seq),
     .rst (rst),
     .clk (clk),
@@ -46,5 +48,11 @@ lfsr lfsr_block(
     .en (1'b1),
     .data_out (k)
 );
+
+//bin2bcd bin2bcd_block(
+//    .x (bin),
+//    .BCD (BCD)
+//);
+
 endmodule
 
